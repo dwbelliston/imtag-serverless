@@ -56,7 +56,7 @@ Parameters:
 Resources:
   ImtagTagsGetFunction:
     Properties:
-      CodeUri: s3://1s-imtag-api-tags/6c5cf0c9cf9c357e089a480eeea65f3d
+      CodeUri: s3://1s-imtag-api-tags/ff1de9ee15812f5df37c5acdaf1ddf57
       Environment:
         Variables:
           DB_HOSTNAME:
@@ -80,6 +80,10 @@ Resources:
       Handler: app.get_handler
       Layers:
       - arn:aws:lambda:us-east-1:842337631775:layer:LambdaLayerPymysql:3
+      Policies:
+      - AWSLambdaBasicExecutionRole
+      - AmazonRDSDataFullAccess
+      - AmazonSSMReadOnlyAccess
       Runtime: python3.7
       VpcConfig:
         SecurityGroupIds:
@@ -91,7 +95,7 @@ Resources:
     Type: AWS::Serverless::Function
   ImtagTagsPostFunction:
     Properties:
-      CodeUri: s3://1s-imtag-api-tags/0860a285a36c9a036eab14266a2e6459
+      CodeUri: s3://1s-imtag-api-tags/575a4883b93276c54d68c038922cf72d
       Environment:
         Variables:
           DB_HOSTNAME:
@@ -115,6 +119,10 @@ Resources:
       Handler: app.post_handler
       Layers:
       - arn:aws:lambda:us-east-1:842337631775:layer:LambdaLayerPymysql:3
+      Policies:
+      - AWSLambdaBasicExecutionRole
+      - AmazonRDSDataFullAccess
+      - AmazonSSMReadOnlyAccess
       Runtime: python3.7
       VpcConfig:
         SecurityGroupIds:
