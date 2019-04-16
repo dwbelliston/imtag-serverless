@@ -8,4 +8,4 @@ Lambda layers is a great use case for this.
 
 ## Setup
 
-Docs for walking through setting up a layer is located [imtag/imtag-api/lambda-layer-pymysql](imtag/imtag-api/lambda-layer-pymysql)
+Docs for walking through setting up a layer is located [imtag/imtag-api/lambda-layer-pymysql](../../imtag/imtag-api/lambda-layer-pymysql)
