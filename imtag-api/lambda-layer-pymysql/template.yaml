@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  lambda layer for connection to pymysql
+
+Resources:
+  LambdaLayerPymysql:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: LambdaLayerPymysql
+      Description: Provides db connection functionality
+      ContentUri: ./lambda-layer-pymysql.zip
+      CompatibleRuntimes:
+        - python3.7
+      RetentionPolicy: Retain
+
+Outputs:
+  LambdaLayerPymysql:
+    Description: "Arn for pymysql lambda layer"
+    Value: !Ref LambdaLayerPymysql

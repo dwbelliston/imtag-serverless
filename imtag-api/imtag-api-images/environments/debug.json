@@ -1,0 +1,10 @@
+{
+  "ImtagImagesGetFunction": {
+    "ENV": "debug",
+    "USE_PARAMETER_STORE": "False",
+    "DB_HOSTNAME": "docker.for.mac.localhost",
+    "DB_USER": "imtagdev",
+    "DB_PASSWORD": "imtagdev",
+    "DB_NAME": "imtagdev"
+  }
+}

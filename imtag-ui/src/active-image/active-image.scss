@@ -1,0 +1,29 @@
+.active-image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.active-image {
+  position: relative;
+  border-radius: 1rem;
+  text-align: center;
+
+  img {
+    // width: 80%;
+    border-radius: 4px;
+    object-fit: cover;
+    box-shadow: #95a5a6 4px 4px;
+    height: 40vh;
+  }
+}
+
+.banner-behind {
+  position: absolute;
+  background: #3498db;
+  top: 25%;
+  bottom: 25%;
+  width: 100%;
+}

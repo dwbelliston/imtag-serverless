@@ -1,0 +1,75 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  imtag-api-images
+
+Globals:
+  Function:
+    Timeout: 29
+
+Parameters:
+  Env:
+    Description: "Required. The env"
+    Type: "String"
+
+  UseParameterStore:
+    Description: "Required. Use param store to pull db credentials"
+    Type: "String"
+
+  DatabaseUsername:
+    Description: "Required. The Database username"
+    Type: "String"
+
+  DatabasePassword:
+    Description: "Required. The Database password"
+    Type: "String"
+
+  DatabaseHostname:
+    Description: "Required. The Database hostname"
+    Type: "String"
+
+  DatabaseName:
+    Description: "Required. The Database name"
+    Type: "String"
+
+Resources:
+  ImtagImagesGetFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: images/
+      Handler: app.lambda_handler
+      Runtime: python3.7
+      Events:
+        GetImagesEvent:
+          Type: Api
+          Properties:
+            Path: /images
+            Method: GET
+      Layers:
+        - arn:aws:lambda:us-east-1:842337631775:layer:LambdaLayerPymysql:3
+      VpcConfig:
+        SecurityGroupIds:
+          - sg-076c10e0a8f259412
+        SubnetIds:
+          - subnet-0e0722379640918ee
+          - subnet-05d52ebdb148879b6
+          - subnet-05dc1181f57a3af42
+      Environment:
+        Variables:
+          ENV: !Ref Env
+          DB_USER: !Ref DatabaseUsername
+          DB_PASSWORD: !Ref DatabasePassword
+          DB_HOSTNAME: !Ref DatabaseHostname
+          DB_NAME: !Ref DatabaseName
+          USE_PARAMETER_STORE: !Ref UseParameterStore
+
+Outputs:
+  ImtagImagesApi:
+    Description: "API Gateway endpoint URL for Prod stage for Imtag Api Images function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/images/"
+  ImtagImagesGetFunction:
+    Description: "Imtag Get Image Lambda Function ARN"
+    Value: !GetAtt ImtagImagesGetFunction.Arn
+  ImtagImagesGetIamRole:
+    Description: "Implicit IAM Role created for Imtag Images function"
+    Value: !GetAtt ImtagImagesGetFunctionRole.Arn

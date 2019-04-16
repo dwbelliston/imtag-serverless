@@ -1,0 +1,127 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'imtag-api-tags
+
+  '
+Globals:
+  Function:
+    Timeout: 60
+Outputs:
+  ImtagTagsApi:
+    Description: API Gateway endpoint URL for Prod stage for Imtag Api Tags function
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/tags/
+  ImtagTagsGetFunction:
+    Description: Imtag Get Tags Lambda Function ARN
+    Value:
+      Fn::GetAtt:
+      - ImtagTagsGetFunction
+      - Arn
+  ImtagTagsGetIamRole:
+    Description: Implicit IAM Role created for Imtag Tags function
+    Value:
+      Fn::GetAtt:
+      - ImtagTagsGetFunctionRole
+      - Arn
+  ImtagTagsPostFunction:
+    Description: Imtag Post Tag Lambda Function ARN
+    Value:
+      Fn::GetAtt:
+      - ImtagTagsPostFunction
+      - Arn
+  ImtagTagsPostIamRole:
+    Description: Implicit IAM Role created for Imtag Tags function
+    Value:
+      Fn::GetAtt:
+      - ImtagTagsPostFunctionRole
+      - Arn
+Parameters:
+  DatabaseHostname:
+    Description: Required. The Database hostname
+    Type: String
+  DatabaseName:
+    Description: Required. The Database name
+    Type: String
+  DatabasePassword:
+    Description: Required. The Database password
+    Type: String
+  DatabaseUsername:
+    Description: Required. The Database username
+    Type: String
+  Env:
+    Description: Required. The env
+    Type: String
+  UseParameterStore:
+    Description: Required. Use param store to pull db credentials
+    Type: String
+Resources:
+  ImtagTagsGetFunction:
+    Properties:
+      CodeUri: s3://1s-imtag-api-tags/6c5cf0c9cf9c357e089a480eeea65f3d
+      Environment:
+        Variables:
+          DB_HOSTNAME:
+            Ref: DatabaseHostname
+          DB_NAME:
+            Ref: DatabaseName
+          DB_PASSWORD:
+            Ref: DatabasePassword
+          DB_USER:
+            Ref: DatabaseUsername
+          ENV:
+            Ref: Env
+          USE_PARAMETER_STORE:
+            Ref: UseParameterStore
+      Events:
+        GetTagsEvent:
+          Properties:
+            Method: GET
+            Path: /tags
+          Type: Api
+      Handler: app.get_handler
+      Layers:
+      - arn:aws:lambda:us-east-1:842337631775:layer:LambdaLayerPymysql:3
+      Runtime: python3.7
+      VpcConfig:
+        SecurityGroupIds:
+        - sg-076c10e0a8f259412
+        SubnetIds:
+        - subnet-0e0722379640918ee
+        - subnet-05d52ebdb148879b6
+        - subnet-05dc1181f57a3af42
+    Type: AWS::Serverless::Function
+  ImtagTagsPostFunction:
+    Properties:
+      CodeUri: s3://1s-imtag-api-tags/0860a285a36c9a036eab14266a2e6459
+      Environment:
+        Variables:
+          DB_HOSTNAME:
+            Ref: DatabaseHostname
+          DB_NAME:
+            Ref: DatabaseName
+          DB_PASSWORD:
+            Ref: DatabasePassword
+          DB_USER:
+            Ref: DatabaseUsername
+          ENV:
+            Ref: Env
+          USE_PARAMETER_STORE:
+            Ref: UseParameterStore
+      Events:
+        GetTagsEvent:
+          Properties:
+            Method: POST
+            Path: /tags
+          Type: Api
+      Handler: app.post_handler
+      Layers:
+      - arn:aws:lambda:us-east-1:842337631775:layer:LambdaLayerPymysql:3
+      Runtime: python3.7
+      VpcConfig:
+        SecurityGroupIds:
+        - sg-076c10e0a8f259412
+        SubnetIds:
+        - subnet-0e0722379640918ee
+        - subnet-05d52ebdb148879b6
+        - subnet-05dc1181f57a3af42
+    Type: AWS::Serverless::Function
+Transform: AWS::Serverless-2016-10-31

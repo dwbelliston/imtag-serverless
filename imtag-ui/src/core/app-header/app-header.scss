@@ -1,0 +1,28 @@
+header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.links {
+  ul {
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 1rem;
+  }
+
+  a {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    text-align: center;
+    border-bottom: solid 2px transparent;
+  }
+
+  .is-active {
+    border-bottom-color: #5eeacf;
+  }
+}

@@ -1,0 +1,8 @@
+[
+  "Env=dev",
+  "UseParameterStore=True",
+  "DatabaseHostname=/DB/DEV/ENDPOINT",
+  "DatabaseUsername=/DB/DEV/USERNAME",
+  "DatabasePassword=/DB/DEV/PASSWORD",
+  "DatabaseName=dev"
+]

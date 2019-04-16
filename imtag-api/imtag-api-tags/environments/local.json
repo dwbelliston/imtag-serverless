@@ -1,0 +1,18 @@
+{
+  "ImtagTagsGetFunction": {
+    "ENV": "local",
+    "DB_HOSTNAME": "docker.for.mac.localhost",
+    "USE_PARAMETER_STORE": "False",
+    "DB_USER": "imtagdev",
+    "DB_PASSWORD": "imtagdev",
+    "DB_NAME": "imtagdev"
+  },
+  "ImtagTagsPostFunction": {
+    "ENV": "local",
+    "DB_HOSTNAME": "docker.for.mac.localhost",
+    "USE_PARAMETER_STORE": "False",
+    "DB_USER": "imtagdev",
+    "DB_PASSWORD": "imtagdev",
+    "DB_NAME": "imtagdev"
+  }
+}
