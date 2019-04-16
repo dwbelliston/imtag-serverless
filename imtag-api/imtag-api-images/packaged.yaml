@@ -44,7 +44,7 @@ Parameters:
 Resources:
   ImtagImagesGetFunction:
     Properties:
-      CodeUri: s3://1s-imtag-api-images/601a819284fb23a5ee5f88486ba3567f
+      CodeUri: s3://1s-imtag-api-images/e9087ea675cebc10e450827a223361a3
       Environment:
         Variables:
           DB_HOSTNAME:
@@ -68,6 +68,10 @@ Resources:
       Handler: app.lambda_handler
       Layers:
       - arn:aws:lambda:us-east-1:842337631775:layer:LambdaLayerPymysql:3
+      Policies:
+      - AWSLambdaBasicExecutionRole
+      - AmazonRDSDataFullAccess
+      - AmazonSSMReadOnlyAccess
       Runtime: python3.7
       VpcConfig:
         SecurityGroupIds:

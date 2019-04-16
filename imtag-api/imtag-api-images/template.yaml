@@ -45,6 +45,10 @@ Resources:
           Properties:
             Path: /images
             Method: GET
+      Policies:
+        - AWSLambdaBasicExecutionRole            
+        - AmazonRDSDataFullAccess
+        - AmazonSSMReadOnlyAccess
       Layers:
         - arn:aws:lambda:us-east-1:842337631775:layer:LambdaLayerPymysql:3
       VpcConfig:
