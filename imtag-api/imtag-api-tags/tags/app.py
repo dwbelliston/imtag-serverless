@@ -47,6 +47,9 @@ def get_handler(event, context):
 
 def post_handler(event, context):
     LOGGER.info("post_handler tags")
+    
+    # ptvsd.break_into_debugger()
+
     try:
         response = post_main(event, context)
         return response
@@ -130,6 +133,7 @@ def post_main(event, context):
     # Connect to db
     try:
         set_db_connection()
+        # raise Exception
     except Exception as err:
         LOGGER.error("Unable to establish connection")
         raise err

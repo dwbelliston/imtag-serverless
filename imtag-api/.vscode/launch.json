@@ -5,6 +5,19 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "AWS SAM Tags Post",
+      "type": "python",
+      "request": "attach",
+      "port": 5890,
+      "host": "localhost",
+      "pathMappings": [
+        {
+          "localRoot": "${workspaceFolder}/imtag-api-tags/.aws-sam/build/ImtagTagsPostFunction",
+          "remoteRoot": "/var/task"
+        }
+      ]
+    },    
+    {
       "name": "SAM CLI Python Imtag Api Images",
       "type": "python",
       "request": "attach",
