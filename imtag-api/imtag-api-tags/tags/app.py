@@ -133,7 +133,6 @@ def post_main(event, context):
     # Connect to db
     try:
         set_db_connection()
-        # raise Exception
     except Exception as err:
         LOGGER.error("Unable to establish connection")
         raise err
