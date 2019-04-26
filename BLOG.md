@@ -165,10 +165,10 @@ https://RANDOM_STUFF.execute-api.us-east-1.amazonaws.com/Prod/hello/
 
 A living Serverless API... that does nothing. But an API none the less.
 
-## Outro
+## Just Beginning
 
-Hopefully this will give you some momentum towards mastering serverless development. I think its really worthwile to spend some time getting up to speed on serverless application development.
+Hopefully this will give you some momentum towards mastering serverless development. I think its really worthwile to spend some time getting up to speed on serverless application development, this is just the beginning.
 
-## A full example
+## Full Example
 
 We built an api, but we are far from providing the requirements we outlined above. If you want to carry on with this example you can see the full code examples with a [guide in this repo](https://github.com/dwbelliston/imtag-serverless)
