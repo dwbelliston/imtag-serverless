@@ -29,7 +29,7 @@ We are going to move pass a few things that will need to be in place before you 
 
 A natural place to start building an api is with AWS Lambda web console. When you navigate to the console, there is a simple wizard you can use to create a function. This is great and works for simple functions, but you will soon find that it will quickly be less than adequate for working through building your api. You should choose a framework that will give you ability to run and test lambdas locally and then will aid you in packging those up and getting them to the cloud. Google (or Bing or AskJeeves) 'serverless frameworks' and you will see that there are many options. One that is provided by AWS is called AWS SAM. Lets use that for this tutorial.
 
-Install AWS SAM through the (online docs)[https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html]
+Install AWS SAM through the [online docs](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
 
 Once installed, you can get running serverless app with the 'init' command. This command will start you out with the following files:
 
@@ -50,7 +50,7 @@ Once installed, you can get running serverless app with the 'init' command. This
         └── test_handler.py
 ```
 
-(Example generated app) [https://github.com/dwbelliston/imtag-serverless/tree/master/fix-my-serverless-resources/fix-local-development]
+[Example generated app](https://github.com/dwbelliston/imtag-serverless/tree/master/fix-my-serverless-resources/fix-local-development)
 
 This app is ready out of the box. You can start this up locally with the command:
 
@@ -170,4 +170,4 @@ Hopefully this will give you some momentum towards mastering serverless developm
 
 ## More?
 
-We built an api, but we are far from providing the requirements we outlined above. If you want to carry on with this example you can see the full code examples with a (guide in this repo)[https://github.com/dwbelliston/imtag-serverless]
+We built an api, but we are far from providing the requirements we outlined above. If you want to carry on with this example you can see the full code examples with a [guide in this repo](https://github.com/dwbelliston/imtag-serverless)
