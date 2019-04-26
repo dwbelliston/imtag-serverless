@@ -34,4 +34,4 @@ Check out the [guide](guide) folder to walk through setting up the application a
 
 ## Blog
 
-Check out the [blog](BLOG.md) that was published to (1Strategy)[1strategy.com/blog] website that walked through some of the developer tooling around serverless application development.
+Check out the [blog](BLOG.md) that was published to [1Strategy](1strategy.com/blog) website that walked through some of the developer tooling around serverless application development.

@@ -1,4 +1,4 @@
-# 3 Tools for building a Serverless API
+# Tooling for building a Serverless API
 
 ---
 
