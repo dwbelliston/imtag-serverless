@@ -170,4 +170,4 @@ Hopefully this will give you some momentum towards mastering serverless developm
 
 ## More?
 
-We built an api, but we are far from providing the requirements we outlined above. If you want to carry on with this example you can see the full code examples with a (guide in this repo)[https://github.com/dwbelliston/imtag-serverless].
+We built an api, but we are far from providing the requirements we outlined above. If you want to carry on with this example you can see the full code examples with a (guide in this repo)[https://github.com/dwbelliston/imtag-serverless]

@@ -58,7 +58,7 @@ Here is a design file from the designer
 
 <img src="images/web.png" width="400" style="text-align:center">
 
-### Set up VP
+### Set up VPC
 
 Start by setting up the VPC. There is a nice cloud formation script used to make this easy located in the repo
 
