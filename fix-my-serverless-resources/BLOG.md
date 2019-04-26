@@ -1,12 +1,14 @@
-# Developing a Serverless API
+# 3 Tools for building a Serverless API
 
-- intro
+---
 
-You have heard of serverless, no doubt. Many companies are starting to build serverless applications and explore the different use cases for them. The severless future is exciting to say the least, and with more people joining the community we can see the reason for the buzz, it is fitting nicely into the world of cloud computing where we dont want to fuss with managing infrastructure and just want to focus on source code that gives our businesses an edge.
+You have heard of serverless, no doubt. Many companies are starting to build serverless applications and explore the different use cases for them. The serverless future is exciting to say the least, and with more people joining the community we can see the reason for the buzz, it is fitting nicely into the world of cloud computing where we dont want to fuss with managing infrastructure and just want to focus on source code that gives our businesses an edge.
+
+---
 
 - reason for blog (why)
 
-The reason for this blog is to walk through the developers journey of starting to develop a serverless api. You can find alot of resources about serverless and what it is and why you would want to use it. Once you have decided you want to start building a serverless api, then this blog post can be handy. Certainly, there are other blog posts like this one as well. This is not an exhaustive tutorial, but should get you moving in the right direction and help you navigate a few setup issues I had when starting. There will also be a few lambda best practice tips along the way.
+The reason for this blog is to walk through a few developer tools you should use when starting to develop a serverless api. You can find alot of resources about serverless and what it is and why you would want to use it. Once you have decided you want to start building a serverless api, then this blog post can be handy. Certainly, there are other blog posts like this one as well. This is not an exhaustive tutorial, but should get you moving in the right direction and help you navigate a few setup issues I had when starting. 
 
 - backdrop to problem
 
@@ -17,13 +19,13 @@ In an ideal world you are given some requirements for your application. Lets sta
 - API to for user to post an image with a given tag
 - API to receive what tags user has created
 
-Pretty simple API to develop, so lets get started building and talk about some tips along the way.
+Pretty simple API to develop, so lets get started building and talk about the tools that will help us on our way.
 
 - hand wave prereqs
 
-We are going to move pass a few things that will need to be in place before you start with this. We are assuming you have an AWS environment and access to it, both through the web browser console and programmtic access set up with cli. We will also assume there is a database with some data available for use to use to test the apis we call. If you dont have that setup, the blog post will still show you what building a serverless app will look like, just dont expect it to work. :) Some instructions on how to set that up can be found in this (guide)[https://github.com/dwbelliston/imtag-serverless/tree/master/guide], so take a look at that if you need some pointers on how to get the aws environment and database setup.
+We are going to move pass a few things that will need to be in place before you start with this. We are assuming you have an AWS environment and access to it, both through the web browser console and programmtic access set up with cli. 
 
-# Developer Stop 1: Use tooling so you can build locally
+# Developer Tool 1: Build locally
 
 A natural place to start building an api is with AWS Lambda web console. When you navigate to the console, there is a simple wizard you can use to create a function. This is great and works for simple functions, but you will soon find that it will quickly be less than adequate for working through building your api. You should choose a framework that will give you ability to run and test lambdas locally and then will aid you in packging those up and getting them to the cloud. Google (or Bing or AskJeeves) 'serverless frameworks' and you will see that there are many options. One that is provided by AWS is called AWS SAM. Lets use that for this tutorial.
 
@@ -58,7 +60,7 @@ You can then invoke this function as its running through your borwser at "http:/
 
 Awesome! Lambdas running locally, starting out right. This will make it way easier to iterate over our code and get things in shape before deploying.
 
-# Developer Stop 2: Use tooling to debug locally
+# Developer Tool 2: Debug locally
 
 I remember my early days of web development, `console.log()` was my best friend but, then, I was taught how to use the chrome debugger tool and I was reborn. Certainly logging has a place, but a step through debugger is crucial to those super tricky situations where you just wish you could pause time. Luckily, we can achieve that same goodness with our serverless apps.
 
@@ -66,7 +68,7 @@ AWS SAM and VS Code play nice together. Lets walk through setting up a debugging
 
 The AWS SAM docs are almost awesome. They got me pretty far, but a couple things were missing so It did not work for me. Start with the docs, which will help you set up `ptvsd`
 
-  https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-using-debugging-python.html
+https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-using-debugging-python.html
 
 To set up `ptvsd` you will be walked through the pip install and then adding a snippet of python code to the function that looks like this.
 
@@ -124,13 +126,13 @@ Use the debug controls to navigate throught the code.
 
 You are a time pausing wizard. At least in a small way.
 
-# Developer Stop 3: Use tooling to package and deploy your app
+# Developer Tool 3: Package and deploy locally
 
 The app is running locally, super! But we have heard enough of the whole 'It works on my machine' and dont want to add to that. AWS SAM makes this easy for us. You will need to create an S3 bucket for the zipped artifact first though.
 
 `aws s3 mb s3://mybucket-for-serverless`
 
-THe following commands will package the lambda function for us along with all its dependencies. AWS SAM is just cloud formation with some syntatic sugar. The 
+THe following commands will package the lambda function for us along with all its dependencies. AWS SAM is just cloud formation with some syntatic sugar. The
 
 - Build the app locally
 
@@ -145,12 +147,27 @@ THe following commands will package the lambda function for us along with all it
 - Deploy the app through cloud formation stack
 
   sam deploy \
-    --template-file packaged.yaml \
-    --stack-name STACK_NAME \
-    --capabilities CAPABILITY_IAM \
-    --region us-east-1
+   --template-file packaged.yaml \
+   --stack-name STACK_NAME \
+   --capabilities CAPABILITY_IAM \
+   --region us-east-1
 
 When you get more sophisticated there will be more that goes into building and deploying, but this is working great for us. SAM is going to package the lambda for us, create an artifact and setup that lambda behind an API Gateway. Where did the API Gateway come in? Check out the 'template.yaml' project folder and you can see that there are events tied to your function creation. The event type 'API' is what is creating the API Gateway.
 
 Go to the console and check out what is created for Lambda, CloudFormation and Api Gateway. Make sure you are in the region set in your aws cli profile.
 
+You will see in the output section of the CloudFormation stack a URL for the api you have deployed.
+
+Something like this
+
+https://RANDOM_STUFF.execute-api.us-east-1.amazonaws.com/Prod/hello/
+
+A living Serverless API... that does nothing. But an API none the less.
+
+- Outro
+
+Hopefully this will give you some momentum towards mastering serverless development. I think its really worthwile to spend some time getting up to speed on serverless application development.
+
+- More?
+
+We built an api, but we are far from providing the requirements we outlined above. If you want to carry on with this example you can see the full code examples with a (guide in this repo)[https://github.com/dwbelliston/imtag-serverless/tree/master/guide].
