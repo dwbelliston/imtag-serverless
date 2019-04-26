@@ -8,7 +8,7 @@ You can use the sam cli to init an example hello world application. This is a gr
 
 Run
 
-`sam init -n my-app`
+`sam init --runtime python3.7 --name my-app`
 
 This provides you with the application and some great documentation on what each file is for and how to use the sam cli to start the api and invoke the functions.
 
