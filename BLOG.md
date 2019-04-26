@@ -2,9 +2,9 @@
 
 ---
 
-You have heard of serverless, no doubt. Many companies are starting to build serverless applications and explore the different use cases for them. The serverless future is exciting to say the least, and with more people joining the community we can see the reason for the buzz, it is fitting nicely into the world of cloud computing where we dont want to fuss with managing infrastructure and just want to focus on source code that gives our businesses an edge.
+You have heard of serverless, no doubt. Many companies are starting to build serverless applications and explore the different use cases for them. The serverless future is exciting to say the least, and with more people joining the community we can see the reason for the buzz, it is fitting nicely into the world of cloud computing where we dont want to fuss with managing infrastructure and just want to focus on source code that differentiates our business.
 
-The reason for this blog is to walk through a few developer tools you should use when starting to develop a serverless api. You can find alot of resources about serverless and what it is and why you would want to use it. Once you have decided you want to start building a serverless api, then this blog post can be handy. Certainly, there are other blog posts like this one as well. This is not an exhaustive tutorial, but should get you moving in the right direction and help you navigate a few setup issues I had when starting.
+The reason for this blog is to walk through some tooling setup you should use when starting to develop a serverless api. You can find alot of resources about serverless and what it is and why you would want to use it. Once you have decided you want to start building a serverless api, then this blog post can be handy. Certainly, there are other blog posts like this one as well. This is not an exhaustive tutorial, but should get you moving in the right direction and help you navigate a few setup issues I had when starting.
 
 ---
 
@@ -50,7 +50,7 @@ Once installed, you can get running serverless app with the 'init' command. This
         └── test_handler.py
 ```
 
-[Example generated app](https://github.com/dwbelliston/imtag-serverless/tree/master/fix-my-serverless-resources/fix-local-development)
+[Example generated app](https://github.com/dwbelliston/imtag-serverless/tree/master/fix-my-serverless-resources/fix-local-development/my-app)
 
 This app is ready out of the box. You can start this up locally with the command:
 
@@ -77,6 +77,7 @@ import ptvsd
 
 # Enable ptvsd on 0.0.0.0 address and on port 5890 that we'll connect later with our IDE
 ptvsd.enable_attach(address=('0.0.0.0', 5890), redirect_output=True)
+print('Hello, Im going to wait for vs code to attach to me before I continue...')
 ptvsd.wait_for_attach()
 ```
 
@@ -122,7 +123,7 @@ You can see in your terminal that the function stops. It is waiting at the point
 
 Now you can resume the debug with the debug feature in VS Code. Go to the debug pane and at the top select your launch configuration from the step above. This is where everything ties together. VS Code attaches to the debug port and takes you into the source code defined in the launch configuration.
 
-Use the debug controls to navigate throught the code.
+Use the debug controls to navigate through the code.
 
 You are a time pausing wizard. At least in a small way.
 
@@ -132,7 +133,7 @@ The app is running locally, super! But we have heard enough of the whole 'It wor
 
 `aws s3 mb s3://mybucket-for-serverless`
 
-THe following commands will package the lambda function for us along with all its dependencies. AWS SAM is just cloud formation with some syntatic sugar. The
+THe following commands will package the lambda function for us along with all its dependencies. AWS SAM is just CloudFormation with some syntatic sugar.
 
 - Build the app locally
 
@@ -152,7 +153,7 @@ THe following commands will package the lambda function for us along with all it
    --capabilities CAPABILITY_IAM \
    --region us-east-1
 
-When you get more sophisticated there will be more that goes into building and deploying, but this is working great for us. SAM is going to package the lambda for us, create an artifact and setup that lambda behind an API Gateway. Where did the API Gateway come in? Check out the 'template.yaml' project folder and you can see that there are events tied to your function creation. The event type 'API' is what is creating the API Gateway.
+When you get more sophisticated there will be more that goes into building and deploying, but this is working great for us. SAM is going to package the lambda for us, create an artifact and setup that lambda behind an API Gateway. Where did the API Gateway come in? Check out the 'template.yaml' in the project folder and you can see that there are events tied to your function creation. The event type 'API' is what is creating the API Gateway.
 
 Go to the console and check out what is created for Lambda, CloudFormation and Api Gateway. Make sure you are in the region set in your aws cli profile.
 
@@ -168,6 +169,6 @@ A living Serverless API... that does nothing. But an API none the less.
 
 Hopefully this will give you some momentum towards mastering serverless development. I think its really worthwile to spend some time getting up to speed on serverless application development.
 
-## More?
+## A full example
 
 We built an api, but we are far from providing the requirements we outlined above. If you want to carry on with this example you can see the full code examples with a [guide in this repo](https://github.com/dwbelliston/imtag-serverless)
