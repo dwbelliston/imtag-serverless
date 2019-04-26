@@ -14,7 +14,6 @@ An example serverless application. React UI served through AWS Cloudfront. API c
   <img src="guide/images/web.png" width="400" style="text-align:center">
 </div>
 
-
 ## Structure
 
 It is best to use mutliple repos for the different parts of the application, but they are all under one repo here for easy of discovery.
@@ -31,4 +30,8 @@ It is best to use mutliple repos for the different parts of the application, but
 
 ## Guide
 
-Check out the [guide](guide) folder to walk through setting up the application and catch a bit of what I learned going through the process
+Check out the [guide](guide) folder to walk through setting up the application and catch a bit of what I learned going through the process.
+
+## Blog
+
+Check out the [blog](BLOG.md) that was published to (1Strategy)[1strategy.com/blog] website that walked through some of the developer tooling around serverless application development.

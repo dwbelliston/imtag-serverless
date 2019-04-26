@@ -2,13 +2,15 @@
 
 ## In AWS
 
-Create RDS instance, this example uses the AWS Aurora Serverless, which has to be place in a VPC. THis adds additional complexity because the lambdas needs to then be deployed in the same vpc subnets. Any RDS will work it will just maybe require some network confiuration.
+Create RDS instance, this example uses AWS Aurora Serverless, which has to be placed in a VPC. This adds additional complexity because the lambdas need to then be deployed in the same vpc subnets, this is done when you setup the CloudFormation templates.
 
 ## Locally
 
-When the apis are run locally it will require access to a local database, or if you want to tunnel into remote database that would work too.
+When the apis are run locally it will require access to a local database, or if you want to tunnel into a remote database that would work too.
 
-## Setup tables
+Find a tutorial online to help you setup mysql locally. https://dev.mysql.com/doc/mysql-getting-started/en/ If you are on a mac, I have great success with brew.
+
+## SQL to Setup tables
 
 ### Image Table
 
@@ -82,4 +84,4 @@ Some commands that were helpful to me in connecting to local
 
     GRANT ALL PRIVILEGES ON _._ TO `computer name`@`localhost`;
 
-    mysql --user=imtagdev --password -h hostname
+    mysql --user=user-name --password -h hostname

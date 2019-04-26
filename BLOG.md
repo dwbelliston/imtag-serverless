@@ -4,13 +4,13 @@
 
 You have heard of serverless, no doubt. Many companies are starting to build serverless applications and explore the different use cases for them. The serverless future is exciting to say the least, and with more people joining the community we can see the reason for the buzz, it is fitting nicely into the world of cloud computing where we dont want to fuss with managing infrastructure and just want to focus on source code that gives our businesses an edge.
 
+The reason for this blog is to walk through a few developer tools you should use when starting to develop a serverless api. You can find alot of resources about serverless and what it is and why you would want to use it. Once you have decided you want to start building a serverless api, then this blog post can be handy. Certainly, there are other blog posts like this one as well. This is not an exhaustive tutorial, but should get you moving in the right direction and help you navigate a few setup issues I had when starting.
+
 ---
 
-- reason for blog (why)
+## The Story
 
-The reason for this blog is to walk through a few developer tools you should use when starting to develop a serverless api. You can find alot of resources about serverless and what it is and why you would want to use it. Once you have decided you want to start building a serverless api, then this blog post can be handy. Certainly, there are other blog posts like this one as well. This is not an exhaustive tutorial, but should get you moving in the right direction and help you navigate a few setup issues I had when starting. 
-
-- backdrop to problem
+### The Serverless App to Build
 
 In an ideal world you are given some requirements for your application. Lets start there. Your design team has handed you some specs for a new web application they want for their machine learning team. After review, you create a list of the backend work that will need to be done to provide an api to service the webpage that the frontend team will be building. You identify the following requirements:
 
@@ -21,11 +21,11 @@ In an ideal world you are given some requirements for your application. Lets sta
 
 Pretty simple API to develop, so lets get started building and talk about the tools that will help us on our way.
 
-- hand wave prereqs
+#### Hand wave (👋) some Setup
 
-We are going to move pass a few things that will need to be in place before you start with this. We are assuming you have an AWS environment and access to it, both through the web browser console and programmtic access set up with cli. 
+We are going to move pass a few things that will need to be in place before you start with this. We are assuming you have an AWS environment and access to it, both through the web browser console and programmtic access set up with cli.
 
-# Developer Tool 1: Build locally
+## Developer Tool 1: Build locally
 
 A natural place to start building an api is with AWS Lambda web console. When you navigate to the console, there is a simple wizard you can use to create a function. This is great and works for simple functions, but you will soon find that it will quickly be less than adequate for working through building your api. You should choose a framework that will give you ability to run and test lambdas locally and then will aid you in packging those up and getting them to the cloud. Google (or Bing or AskJeeves) 'serverless frameworks' and you will see that there are many options. One that is provided by AWS is called AWS SAM. Lets use that for this tutorial.
 
@@ -35,7 +35,7 @@ Once installed, you can get running serverless app with the 'init' command. This
 
 `sam init --runtime python3.7`
 
-```
+```bash
 .
 ├── README.md
 ├── event.json
@@ -60,7 +60,7 @@ You can then invoke this function as its running through your borwser at "http:/
 
 Awesome! Lambdas running locally, starting out right. This will make it way easier to iterate over our code and get things in shape before deploying.
 
-# Developer Tool 2: Debug locally
+## Developer Tool 2: Debug locally
 
 I remember my early days of web development, `console.log()` was my best friend but, then, I was taught how to use the chrome debugger tool and I was reborn. Certainly logging has a place, but a step through debugger is crucial to those super tricky situations where you just wish you could pause time. Luckily, we can achieve that same goodness with our serverless apps.
 
@@ -126,7 +126,7 @@ Use the debug controls to navigate throught the code.
 
 You are a time pausing wizard. At least in a small way.
 
-# Developer Tool 3: Package and deploy locally
+## Developer Tool 3: Package and deploy locally
 
 The app is running locally, super! But we have heard enough of the whole 'It works on my machine' and dont want to add to that. AWS SAM makes this easy for us. You will need to create an S3 bucket for the zipped artifact first though.
 
@@ -164,10 +164,10 @@ https://RANDOM_STUFF.execute-api.us-east-1.amazonaws.com/Prod/hello/
 
 A living Serverless API... that does nothing. But an API none the less.
 
-- Outro
+## Outro
 
 Hopefully this will give you some momentum towards mastering serverless development. I think its really worthwile to spend some time getting up to speed on serverless application development.
 
-- More?
+## More?
 
-We built an api, but we are far from providing the requirements we outlined above. If you want to carry on with this example you can see the full code examples with a (guide in this repo)[https://github.com/dwbelliston/imtag-serverless/tree/master/guide].
+We built an api, but we are far from providing the requirements we outlined above. If you want to carry on with this example you can see the full code examples with a (guide in this repo)[https://github.com/dwbelliston/imtag-serverless].
