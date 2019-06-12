@@ -150,12 +150,8 @@ Go to the console and check out what is created for Lambda, CloudFormation and A
 
 You will see in the output section of the CloudFormation stack a URL for the api you have deployed.
 
-Something like this
+The url will look something like "https://RANDOM_ID.execute-api.us-east-1.amazonaws.com/Prod/hello/"
 
-https://RANDOM_STUFF.execute-api.us-east-1.amazonaws.com/Prod/hello/
+## Keep Going
 
-A living Serverless API... that does nothing. But an API none the less.
-
-## Just Beginning
-
-Hopefully this will give you some momentum towards mastering serverless development. I think its really worthwile to spend some time getting up to speed on serverless application development, this is just the beginning.
+Hopefully this will give you some momentum with using AWS SAM for serverless development. I think its really worthwile to spend some time getting up to speed on serverless technologies and the tools available to help the developer experience be more enjoyable.
